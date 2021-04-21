@@ -7,14 +7,18 @@ inputs:
     required: true
   user:
     description: The user to use to connect to the database
-    required: false
+    required: true
   password:
     description: The password to use to connect to the database
-    required: false
+    required: true
   locations:
     description: Comma-separated list of locations to scan recursively for migrations
     required: true
     default: filesystem:./sql
+  out_of_order:
+    description: Support out of order migrations
+    required: true
+    default: "true"
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -26,6 +30,6 @@ runs:
     FLYWAY_USER: ${{ inputs.user }}
     FLYWAY_PASSWORD: ${{ inputs.password }}
     FLYWAY_LOCATIONS: ${{ inputs.locations }}
-    FLYWAY_OUT_OF_ORDER: "true"
+    FLYWAY_OUT_OF_ORDER: ${{ inputs.out_of_order }}
   args:
     - migrate
