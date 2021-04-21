@@ -31,5 +31,6 @@ runs:
     FLYWAY_PASSWORD: ${{ inputs.password }}
     FLYWAY_LOCATIONS: ${{ inputs.locations }}
     FLYWAY_OUT_OF_ORDER: ${{ inputs.out_of_order }}
+    FLYWAY_IGNORE_MISSING_MIGRATIONS: "true"
   args:
     - migrate
